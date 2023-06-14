@@ -1,0 +1,34 @@
+AIM:To write a SCILAB program to find the impulse & Frequency response of a system 
+SOFTWARE: SCILAB software 
+PROGRAM: 
+ clc; 
+ clear; 
+ close ; 
+ a = 0.9; 
+ h0 = 1; 
+ h1 = a; 
+ h = [h0, h1, zeros(1,100)]; 
+ for i=1:100 
+ h(i+2) = (a^(i+1))*h(i+1); 
+ end 
+ [HW,W] = frmag(h,512); 
+ figure(1); 
+ subplot(2,1,1); 
+ a=gca(); 
+ a.x_location = 'origin'; 
+ a.y_location = 'origin'; 
+ plot([1:length(h)],h,'r'); 
+ xlabel('discrete time index n --->'); 
+ ylabel('Impulse response h[n] ---->'); 
+ title('Impulse response of first order recursive system'); 
+ xgrid(1) 
+ subplot(2,1,2); 
+ a=gca(); 
+a.x_location = 'origin';
+a.y_location = 'origin';
+plot([mtlb_fliplr(-2*%pi*W), 2*%pi*W(2:$)], 
+      [mtlb_fliplr(abs(HW)),abs(HW(2:$))])
+xlabel('Discrete frequency Index W--->'); 
+ylabel('Magnitude response |H(W)| --->'); 
+title('Frequency resposne of a causal, stable, LTI 1st order recursive system')
+xgrid(1); 
