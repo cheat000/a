@@ -1,0 +1,25 @@
+close; 
+clear; 
+x=input('Enter the first input'); 
+h=input('Enter the second input'); 
+y=xcorr(x,h); 
+disp(y); 
+z=xcorr(h,x); 
+disp(z); 
+L1=length(x); L2=length(h); 
+L=max(L1,L2); 
+n1=0:1:L1-1; 
+n2=0:1:L2-1; 
+n3=-L+1:1:L-1; 
+subplot(411),plot2d3(n1,x),xlabel('Time'),ylabel('Amplitude'); 
+a=get("current_axes") 
+a.data_bounds=([-1,0; 4,4]); 
+subplot(412),plot2d3(n2,h),xlabel('Time'),ylabel('Amplitude'); 
+a=get("current_axes") 
+a.data_bounds=([-1,0; 4,4]); 
+subplot(413),plot2d3(n3,y),xlabel('Time'),ylabel('Amplitude'); 
+a=get("current_axes") 
+a.data_bounds=([-4,0; 3,13]); 
+subplot(414),plot2d3(n3,z),xlabel('Time'),ylabel('Amplitude');
+a=get("current_axes") 
+a.data_bounds=([-4,0; 3,13]); 
