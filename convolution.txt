@@ -1,0 +1,20 @@
+close; 
+clear; 
+xsi=input('Enter the starting index of input'); 
+hsi=input('Enter the starting index of impulse'); 
+x=input('Enter the input sequence'); 
+h=input('Enter the impulse response'); 
+y=convol(x,h); 
+disp(y); 
+n1=xsi:1:length(x)+xsi-1; 
+n2=hsi:1:length(h)+hsi-1; 
+n3=xsi+hsi:1:length(x)+length(h)+xsi+hsi-2; 
+subplot(311),plot2d3(n1,x),xlabel('n'),ylabel('x(n)'); 
+a=get("current_axes") 
+a.data_bounds=([-2,0; 3,4]); 
+subplot(312),plot2d3(n2,h),xlabel('n'),ylabel('h(n)'); 
+a=get("current_axes") 
+a.data_bounds=([-3,0; 2,4]); 
+subplot(313),plot2d3(n3,y);xlabel('n');ylabel('y(n)'); 
+a=get("current_axes") 
+a.data_bounds=([-4,0; 3,12]); 
