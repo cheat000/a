@@ -1,0 +1,38 @@
+AIM:To write a SCILAB program to find the N -point DFT of a given sequence and to 
+ compute IDFT 
+SOFTWARE: SCILAB software 
+PROGRAM: 
+ clear; 
+ close; 
+ clc; 
+ x=input('Enter the input'); 
+ N=input('Enter N value'); 
+ disp(x); 
+ n=0:1:N-1; 
+ k=0:1:N-1; 
+ subplot(3, 1, 1); 
+ plot2d3(n,x); 
+ xlabel('Time index'); 
+ ylabel('Amplitude'); 
+ title('Input sequence'); 
+ Y=fft(x); 
+ disp(Y); 
+ magx=abs(Y); 
+ disp(magx); 
+ subplot(3,1,2); 
+ plot2d3(k,magx); 
+ xlabel('k'); 
+ ylabel('Magnitude'); 
+ title('Magnitude plot'); 
+ phase=atan(imag(Y),real(Y)); 
+ disp(phase); 
+ subplot(3,1,3); 
+ plot2d3(k,phase); 
+ xlabel('k'); 
+ ylabel('Radians'); 
+ title('Phase plot'); 
+ x=ifft(Y); 
+ disp(x); 
+TEST DATA:
+Enter the input[1 2 3 4 4 3 2 1] 
+ Enter N value8 
