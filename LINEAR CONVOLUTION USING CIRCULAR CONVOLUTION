@@ -1,0 +1,40 @@
+AIM:To write a SCILAB program to find the linear convolution of given sequence using 
+circular convolution
+SOFTWARE:SCILAB software 
+PROGRAM: 
+ clc; 
+ close; 
+ clear; 
+ x1= input('Enter the first sequence'); 
+ h1= input('Enter the second sequence'); 
+ L1=length(x1); L2=length(h1); 
+ M=max(L1,L2); 
+ N= input('Enter N value'); 
+ x= [x1,zeros(1,N-L1)]; 
+ disp(x); 
+ h= [h1,zeros(1,N-L2)]; 
+ disp(h); 
+ X=fft(x); 
+ disp(X); 
+ H=fft(h); 
+ disp(H); 
+ Y=X.*H; 
+ disp(Y); 
+ y=ifft(Y); 
+ disp(y); 
+ n1=0:1:length(x)-1; 
+ n2=0:1:length(h)-1; 
+ n3=0:1:length(y)-1; 
+ subplot(311),plot2d3(n1,x); title('First sequence'); 
+ a=get("current_axes") 
+ a.data_bounds=([-1,0; 3,4]); 
+ subplot(312),plot2d3(n2,h); title('Second sequence'); 
+ a=get("current_axes") 
+ a.data_bounds=([-1,0; 3,8]); 
+ subplot(313),plot2d3(n3,y); title('Output sequence'); 
+ a=get("current_axes") 
+ a.data_bounds=([-1,0; 6,12]); 
+TEST DATA:
+Enter the first sequence[1 2 3 4] 
+Enter the second sequence[1 1 2 1] 
+Enter N value7
