@@ -1,0 +1,56 @@
+AIM : To write a program in ‘C’ to compute N – point DFT of a 
+Sequence and verify the output using DSP kit. 
+APPARATUS : TMS320C6713DSK (DSP Starter Kit), USB & Power cables. 
+PROGRAM : 
+ #include <stdio.h> 
+#include <math.h> 
+intx[8]; 
+void dft(int *x, int k, int *out); //function prototype 
+constint N =8; //number of data values 
+float pi = 3.1416; 
+float sumRe,sumIm; 
+intx[] = {1,2,3,4,5,6,7,8}; //1-cycle cosine 
+//short x[N]={0,602,974,974,602,0,-602,-974,-974,-602, 
+// 0,602,974,974,602,0,-602,-974,-974,-602};//2-cycles sine 
+intout[2] = {0,0}; 
+float real[8],imag[8],k=8; //init Re and Im results 
+void main() 
+{ 
+int j; 
+dft(x,k,out); 
+printf(" Real part is:\n\n"); 
+for (j=0;j<8;j++) 
+printf("%4f\n",real[j]); 
+printf(" imaginary part is:\n\n"); 
+for (j=0;j<8;j++) 
+printf("%4f\n",imag[j]); 
+} 
+void dft(int *x, int k, int *out) //DFT function 
+{ 
+int temp; 
+ for (temp=0;temp<k;temp++) 
+ { 
+ float sumRe = 0, sumIm = 0; //init real/imag components 
+float cs = 0, sn = 0; //init cosine/sine components 
+inti; 
+ for (i = 0; i< N; i++) //for N-point DFT 
+ { 
+cs = cos(2*pi*(temp)*i/N); //real component 
+sn = sin(2*pi*(temp)*i/N); //imaginary component 
+sumRe = sumRe + x[i]*cs; //sum of real components 
+sumIm = sumIm - x[i]*sn; //sum of imaginary components 
+ } 
+out[0] = sumRe; //sum of real components 
+out[1] = sumIm; 
+ real[temp]= sumRe; 
+imag[temp]= sumIm; 
+ //k++; 
+ //if(k>N)k=0; 
+ //printf("\n%d",sumRe); 
+ //printf("\n%d",sumIm); 
+ //printf("\n%d",out[0]); 
+// printf("\n%d",out[1]); //sum of imaginary components 
+} 
+}
+EXPECTED OUTPUT: real=[36 -4 -4 -4 -4 -4 -4 -4] 
+ imag=[9.66i 4i 1.66i 0 -1.66i -4i -9.66i]
