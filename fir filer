@@ -1,0 +1,29 @@
+AIM : To write a program in SCILAB to design Digital FIR Low pass 
+ filter 
+SOFTWARE : SCILAB software 
+PROGRAM : 
+clc; 
+clear; 
+close; 
+wp= input( 'Enter the pass band edge ( rad )='); 
+ws= input( 'Enter the stop band edge ( rad )='); 
+ ks= input( 'Enter the stop band attenuation (dB)='); 
+ N= (2*%pi*4)./(ws-wp); 
+ N= ceil(N); 
+ wc=(wp+(ws-wp)/2)./%pi 
+ [wft,wfm,fr]=wfir( 'lp',N+1,[wc/2,0],'hm',[0,0]); 
+ figure(1) 
+a = gca(); 
+a.x_location = 'origin'; 
+a.y_location = 'origin'; 
+a.data_bounds = [0,-150;1,50]; 
+plot(2*fr,20*log10(wfm), 'r') 
+xlabel( 'Normalized Digital Frequency w−−−>') 
+ylabel( 'Frequency Response in dB H( jw )=') 
+title( 'Frequency Response of FIR LPF') 
+xgrid(1) 
+disp ('Impulse Response of FIR LPF=',wft) 
+TEST DATA :
+Enter the pass band edge ( rad )=0.3*%pi 
+Enter the stop band edge ( rad )=0.45*%pi 
+Enter the stop band attenuation (dB)=50
