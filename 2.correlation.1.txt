@@ -23,3 +23,6 @@ a.data_bounds=([-4,0; 3,13]);
 subplot(414),plot2d3(n3,z),xlabel('Time'),ylabel('Amplitude');
 a=get("current_axes") 
 a.data_bounds=([-4,0; 3,13]); 
+Enter the first input[1 2 3 4] 
+Enter the second input[1 1 2 1] 
+
