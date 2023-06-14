@@ -1,0 +1,15 @@
+clc; 
+close; 
+clear; 
+x=input('Enter the sequence'); 
+y=xcorr(x,x); 
+disp(y); 
+L=length(x); 
+n1=0:1:L-1; 
+n2=-L+1:1:L-1; 
+subplot(211),plot2d3(n1,x),xlabel('Time'),ylabel('x(n)'); 
+a=get("current_axes") 
+a.data_bounds=([-1,0; 4,4]); 
+subplot(212),plot2d3(n2,y),xlabel('Time'),ylabel('y(n)'); 
+a=get("current_axes") 
+a.data_bounds=([-4,0; 3,30]); 
