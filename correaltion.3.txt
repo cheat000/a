@@ -1,0 +1,21 @@
+ clc; 
+close; 
+clear; 
+x=input('Enter the input sequence'); 
+rxx=xcorr(x,x); 
+disp(rxx); 
+L=length(x); 
+n1=-L+1:1:L-1; 
+E=sum(x.^2); 
+disp(E); 
+cen_index=ceil(length(rxx)/2) 
+rxx_0=rxx(cen_index) 
+if E==rxx_0 
+disp('rxx_0 gives energy'); 
+end 
+rxx_right=rxx(cen_index+1:1:length(rxx)) 
+rxx_left=rxx(cen_index-1:-1:1) 
+if rxx_right==rxx_left 
+disp('rxx(l) is even'); 
+end 
+ 
