@@ -1,0 +1,25 @@
+AIM:To write a SCILAB program to find the response of given difference equation 
+given by y(n) –0.6y(n-1) + 0.08y(n-2) = x(n) +x(n-1) for the given input 
+x(n) = (0.5)nu(n) 
+SOFTWARE:SCILAB software 
+PROGRAM: 
+ clc; 
+ close; 
+ clear; 
+ a=input('Enter the coeffiecints of y(n),y(n-1),...'); 
+ b=input('Enter the coeffiecints of x(n),x(n-1),...'); 
+ x=input('Enter the input data'); 
+ y=filter(b,a,x); 
+ disp(y); 
+ L=length(x); 
+ n=0:1:L-1; 
+ subplot(211),plot2d3(n,x),xlabel('n'),ylabel('x(n)'),title('Input sequence'); 
+ a=get("current_axes") 
+ a.data_bounds=([-1,0; 3,2]); 
+ subplot(212),plot2d3(n,y),xlabel('n'),ylabel('y(n)'),title('output sequence'); 
+ a=get("current_axes") 
+ a.data_bounds=([-1,0; 3,3]); 
+TEST DATA:
+ Enter the coefficients of y(n),y(n-1),...[1 -0.6 0.08] 
+ Enter the coefficients of x(n),x(n-1),...[1 1] 
+ Enter the input data [1 0.5 0.25 0.125]
