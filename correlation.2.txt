@@ -13,3 +13,4 @@ a.data_bounds=([-1,0; 4,4]);
 subplot(212),plot2d3(n2,y),xlabel('Time'),ylabel('y(n)'); 
 a=get("current_axes") 
 a.data_bounds=([-4,0; 3,30]); 
+Enter the sequence x(n) : [1 2 3 4] 
