@@ -1,0 +1,33 @@
+AIM : To write a program in ‘C’ to perform linear convolution 
+between two discrete time sequences and verify the output 
+using TMS320C6713 DSK. 
+APPARATUS : TMS320C6713DSK(DSP Starter Kit), USB & Power cables. 
+ALGORITHM : Convolution of two signals is defined as y (n) =x (n)*h (n) 
+ =∑ x (k)*h (n-k), upper limit=∞, lower limit =0. 
+1.Get the input sequence x(n) 
+2.Get theimpulse response sequence h(n) 
+3.Convolve the both sequence by making use of equation given 
+above for y(n). 
+PROGRAM : #include<stdio.h> 
+#include<math.h> 
+inty[20]; 
+main() 
+{ 
+int m=6; /*Lenght of i/p samples sequence*/ 
+int n=6; /*Lenght of impulse response Co-efficients */ 
+inti=0,j; 
+intx[15]={1,2,3,4,5,6,0,0,0,0,0,0}; /*Input Signal Samples*/ 
+inth[15]={1,2,3,4,5,6,0,0,0,0,0,0}; /*Impulse Response Coefficients*/ 
+for(i=0;i<m+n-1;i++) 
+{ 
+y[i]=0; 
+for(j=0;j<=i;j++) 
+y[i]+=x[j]*h[i-j]; 
+} 
+printf("Linear Convolution\n"); 
+for(i=0;i<m+n-1;i++) 
+printf("%d\n",y[i]); 
+} 
+EXPECTED OUTPUT: y=1 4 10 20 35 56 70 76 73 60 36 
+RESULT:A non-real time ‘C’ program is written and and implemented using DSP 
+ kit to find the Linear convolution between two sequences
